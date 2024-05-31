@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 th:text="'WELCOME index!'"></h1>
+    <a href="test1?name=kim&pass=1111">Model1</a> <br />
+    <a href="test2/lee/30/seoul">Model2</a> <br />
+    <a href="test3">ModelAndView</a> <br />
+
+    <h3 th:text="'Login'"></h3> <br/>
+    <form method="post" action="test4">
+        ID: <input th:type="text" name="id" style="margin-left: 20px"> <br />
+        PASS: <input th:type="password" name="pass"> <br />
+        <button th:type="submit">Submit</button> <br />
+    </form>
+</body>
+</html>
