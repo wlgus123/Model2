@@ -1,11 +1,9 @@
 package hs.kr.study.Model2.controller;
 
+import hs.kr.study.Model2.dto.LoginDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Objects;
@@ -45,18 +43,35 @@ public class TestController {
         return mv;  // ModelAndView 타입으로 한 번에 보내기
     }
 
+//    @PostMapping("/test4")
+//    public String test4(@RequestParam("id") String id,
+//                        @RequestParam("pass") String pass,
+//                        Model model) {
+//        if(id.equals("lee") && pass.equals("3333")) {
+//            model.addAttribute("id", id);
+//            model.addAttribute("pass", pass);
+//        }
+//        else {
+//            return "wrong";
+//        }
+//
+//        return "test4";
+//    }
+
     @PostMapping("/test4")
-    public String test4(@RequestParam("id") String id,
-                        @RequestParam("pass") String pass,
-                        Model model) {
-        if(id.equals("lee") && pass.equals("3333")) {
-            model.addAttribute("id", id);
-            model.addAttribute("pass", pass);
-        }
-        else {
-            return "wrong";
+    // @ModelAttribute로 받아서 아이디, 비번 체크하기
+    public String test4(@ModelAttribute LoginDTO dto, Model model) {
+        // LoginDTO dto : 사용자의 입력을 받아서 자동으로 set메서드 이용해서 LoginDTO에 넣어준다.
+        String uid = dto.getId();
+        String upass = dto.getPass();
+
+        if(uid.equals("lee") && upass.equals("3333")) {
+            model.addAttribute("id", uid);
+            model.addAttribute("pass", upass);
+
+            return "test4";
         }
 
-        return "test4";
+        return "wrong";
     }
 }
